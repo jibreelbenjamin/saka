@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class SakaNilaiAssesmen extends Model
+{
+    use HasFactory;
+
+    protected $table = 'saka_nilai_assesmen';
+    protected $primaryKey = 'id_nilai_assesmen';
+    public $timestamps = true;
+
+    protected $fillable = [
+        'id_komponen_nilai_assesmen',
+        'id_siswa',
+        'nilai',
+    ];
+
+    protected $casts = [
+        'nilai' => 'decimal:2',
+    ];
+
+    // Relasi
+    public function komponenNilaiAssesmen()
+    {
+        return $this->belongsTo(SakaKomponenNilaiAssesmen::class, 'id_komponen_nilai_assesmen', 'id_komponen_nilai_assesmen');
+    }
+
+    public function siswa()
+    {
+        return $this->belongsTo(SakaSiswa::class, 'id_siswa', 'id_siswa');
+    }
+}
