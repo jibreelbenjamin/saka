@@ -19,7 +19,7 @@ class SakaSiswa extends Authenticatable
         'id_kelas',
         'username',
         'password',
-        'nama_lengkap',
+        'nama',
         'kontak',
         'alamat',
     ];

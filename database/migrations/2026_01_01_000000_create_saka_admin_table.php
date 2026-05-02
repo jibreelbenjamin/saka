@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id('id_admin');
             $table->string('username', 255)->unique();
             $table->string('password', 255);
-            $table->string('nama_admin', 255);
+            $table->string('nama', 255);
             $table->rememberToken();
             $table->timestamps();
         });

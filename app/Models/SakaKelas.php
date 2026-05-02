@@ -23,6 +23,11 @@ class SakaKelas extends Model
     ];
 
     // Relasi
+    public function aksesMapel()
+    {
+        return $this->hasMany(SakaAksesMapel::class, 'id_kelas', 'id_kelas');
+    }
+
     public function siswas()
     {
         return $this->hasMany(SakaSiswa::class, 'id_kelas', 'id_kelas');

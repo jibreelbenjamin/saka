@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignId('id_kelas')->constrained('saka_kelas', 'id_kelas')->onDelete('cascade');
             $table->string('username', 255)->unique();
             $table->string('password', 255);
-            $table->string('nama_lengkap', 255);
+            $table->string('nama', 255);
             $table->string('kontak', 255)->nullable();
             $table->string('alamat', 255)->nullable();
             $table->rememberToken();

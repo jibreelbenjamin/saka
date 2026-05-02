@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id('id_akses_mapel');
             $table->foreignId('id_mapel')->constrained('saka_mapel', 'id_mapel')->onDelete('cascade');
             $table->foreignId('id_guru')->constrained('saka_guru', 'id_guru')->onDelete('cascade');
+            $table->foreignId('id_kelas')->constrained('saka_kelas', 'id_kelas')->onDelete('cascade');
             $table->timestamps();
         });
     }
