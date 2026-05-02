@@ -34,6 +34,8 @@ trait ApiResponseTrait
             'code' => $code,
             'message' => $message,
             'errors' => $errors,
+            'total' => 0,
+            'data' => [],
             'meta' => $this->getMetaData()
         ];
 
