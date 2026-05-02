@@ -18,7 +18,7 @@ class SakaGuru extends Authenticatable
     protected $fillable = [
         'username',
         'password',
-        'nama_guru',
+        'nama',
     ];
 
     protected $hidden = [

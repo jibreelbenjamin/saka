@@ -16,6 +16,7 @@ class SakaAksesMapel extends Model
     protected $fillable = [
         'id_mapel',
         'id_guru',
+        'id_kelas',
     ];
 
     // Relasi
@@ -27,5 +28,10 @@ class SakaAksesMapel extends Model
     public function guru()
     {
         return $this->belongsTo(SakaGuru::class, 'id_guru', 'id_guru');
+    }
+
+    public function kelas()
+    {
+        return $this->belongsTo(SakaGuru::class, 'id_kelas', 'id_kelas');
     }
 }

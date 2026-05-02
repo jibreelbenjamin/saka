@@ -18,7 +18,7 @@ class SakaAdmin extends Authenticatable
     protected $fillable = [
         'username',
         'password',
-        'nama_admin',
+        'nama',
     ];
 
     protected $hidden = [
