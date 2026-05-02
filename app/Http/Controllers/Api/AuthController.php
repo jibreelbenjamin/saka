@@ -33,8 +33,10 @@ class AuthController extends Controller
                     $user = SakaAdmin::where('username', $request->username)->first();
                     if ($user) {
                         $profile = [
+                            'username' => $user->username,
+                            'role' => $role,
                             'id_admin' => $user->id_admin,
-                            'nama_admin' => $user->nama_admin,
+                            'nama' => $user->nama,
                         ];
                     }
                     break;
@@ -43,8 +45,10 @@ class AuthController extends Controller
                     $user = SakaGuru::where('username', $request->username)->first();
                     if ($user) {
                         $profile = [
+                            'username' => $user->username,
+                            'role' => $role,
                             'id_guru' => $user->id_guru,
-                            'nama_guru' => $user->nama_guru,
+                            'nama' => $user->nama,
                         ];
                     }
                     break;
@@ -53,13 +57,16 @@ class AuthController extends Controller
                     $user = SakaSiswa::with('kelas')->where('username', $request->username)->first();
                     if ($user) {
                         $profile = [
+                            'username' => $user->username,
+                            'role' => $role,
                             'id_siswa' => $user->id_siswa,
                             'id_kelas' => $user->id_kelas,
-                            'nama_lengkap' => $user->nama_lengkap,
+                            'nama' => $user->nama,
                             'kelas' => $user->kelas ? $user->kelas->nama_kelas : null,
                             'tingkat' => $user->kelas ? $user->kelas->tingkat : null,
-                            'kontak' => $user->kontak,
-                            'alamat' => $user->alamat,
+                            'kontak' => $user->kontak ?? null,
+                            'alamat' => $user->alamat ?? null,
+                            'wali_siswa' => $user->waliSiswa,
                         ];
                     }
                     break;
@@ -86,10 +93,6 @@ class AuthController extends Controller
             $token = $user->createToken('auth_token_' . $role)->plainTextToken;
 
             $data = [
-                'user' => [
-                    'username' => $user->username,
-                    'role' => $role,
-                ],
                 'profile' => $profile,
                 'access_token' => $token,
                 'token_expiration' => '7 Days',
@@ -146,34 +149,37 @@ class AuthController extends Controller
             if ($user instanceof SakaAdmin) {
                 $role = 'admin';
                 $profile = [
+                    'username' => $user->username,
+                    'role' => $role,
                     'id_admin' => $user->id_admin,
-                    'nama_admin' => $user->nama_admin,
+                    'nama' => $user->nama,
                 ];
             } elseif ($user instanceof SakaGuru) {
                 $role = 'guru';
                 $profile = [
+                    'username' => $user->username,
+                    'role' => $role,
                     'id_guru' => $user->id_guru,
-                    'nama_guru' => $user->nama_guru,
+                    'nama' => $user->nama,
                 ];
             } elseif ($user instanceof SakaSiswa) {
                 $role = 'siswa';
                 $user->load('kelas');
                 $profile = [
+                    'username' => $user->username,
+                    'role' => $role,
                     'id_siswa' => $user->id_siswa,
                     'id_kelas' => $user->id_kelas,
-                    'nama_lengkap' => $user->nama_lengkap,
+                    'nama' => $user->nama,
                     'kelas' => $user->kelas ? $user->kelas->nama_kelas : null,
                     'tingkat' => $user->kelas ? $user->kelas->tingkat : null,
                     'kontak' => $user->kontak,
                     'alamat' => $user->alamat,
+                    'wali_siswa' => $user->waliSiswa,
                 ];
             }
 
             $data = [
-                'user' => [
-                    'username' => $user->username,
-                    'role' => $role,
-                ],
                 'profile' => $profile,
             ];
 
