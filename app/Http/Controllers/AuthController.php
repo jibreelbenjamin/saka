@@ -67,7 +67,7 @@ class AuthController
                 break;
         }
 
-        if ($user && $guard) {
+        if (Auth::guard($role)->attempt($credentials)) {
             session(['role' => $role]);
             
             return redirect()->route('home')->with('successToast', 'Selamat datang!');
