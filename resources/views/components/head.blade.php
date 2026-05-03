@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/fav.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/fav.png') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $page ? ucfirst($page).' - ' : '' }}SAKA Sistem Transparansi Akademik</title>
+    <title>{{ (isset($page)) ? ucfirst($page).' - ' : '' }}SAKA Sistem Transparansi Akademik</title>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
     </style>
