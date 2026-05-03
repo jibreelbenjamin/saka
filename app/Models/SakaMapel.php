@@ -14,7 +14,7 @@ class SakaMapel extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'nama_mapel',
+        'kode_mapel', 'nama_mapel',
     ];
 
     // Relasi

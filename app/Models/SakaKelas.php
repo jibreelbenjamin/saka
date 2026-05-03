@@ -14,6 +14,7 @@ class SakaKelas extends Model
     public $timestamps = true;
 
     protected $fillable = [
+        'kode_kelas',
         'nama_kelas',
         'tingkat',
     ];

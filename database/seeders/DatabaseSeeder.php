@@ -17,16 +17,19 @@ class DatabaseSeeder extends Seeder
         // 1. Buat Data Kelas (untuk siswa)
         // ============================================================
         $kelas10 = SakaKelas::create([
+            'kode_kelas' => 'X_RPL_2',
             'nama_kelas' => 'X RPL 2',
             'tingkat' => '1',
         ]);
 
         $kelas11 = SakaKelas::create([
+            'kode_kelas' => 'XI_RPL_2',
             'nama_kelas' => 'XI RPL 2',
             'tingkat' => '2',
         ]);
 
         $kelas12 = SakaKelas::create([
+            'kode_kelas' => 'XII_RPL_2',
             'nama_kelas' => 'XII RPL 2',
             'tingkat' => '3',
         ]);
