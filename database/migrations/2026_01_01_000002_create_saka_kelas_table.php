@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('saka_kelas', function (Blueprint $table) {
             $table->id('id_kelas');
+            $table->string('kode_kelas', 255)->unique();
             $table->string('nama_kelas', 255);
             $table->enum('tingkat', ['1', '2', '3'])->default('1');
             $table->timestamps();
