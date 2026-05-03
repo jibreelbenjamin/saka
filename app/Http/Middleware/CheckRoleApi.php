@@ -6,16 +6,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CheckRole
+class CheckRoleApi
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string  ...$roles
-     * @return mixed
-     */
     public function handle(Request $request, Closure $next, ...$roles)
     {
         $user = $request->user();
@@ -40,7 +32,7 @@ class CheckRole
                 'code' => 403,
                 'message' => 'Forbidden. Anda tidak memiliki akses ke resource ini.',
                 'errors' => [
-                    'role' => ['Role ' . $userRole . ' tidak diizinkan mengakses endpoint ini. Diperlukan role: ' . implode(', ', $roles)]
+                    'role' => ['Role ' . $userRole . ' tidak diizinkan mengakses endpoint ini.']
                 ],
                 'meta' => [
                     'timestamp' => now()->toISOString(),
