@@ -44,10 +44,10 @@
                     <button class="py-2 px-3 w-full gap-x-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
                         <div class="grow text-left">
                         <span class="text-sm font-semibold text-gray-800 dark:text-neutral-300">
-                            {{ Auth::user()->nama }}
+                            {{ Auth::guard($role)->user()->nama }}
                         </span>
                         <p class="text-xs text-gray-500 dark:text-neutral-500">
-                            {{ '@'.Auth::user()->username }}
+                            {{ '@'.Auth::guard($role)->user()->username }}
                         </p>
                         </div>
                     </button>
