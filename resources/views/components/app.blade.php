@@ -152,14 +152,9 @@
             
                 <!-- Link -->
                 <li class="px-2 lg:px-5">
-                <a class="{{ ($page == 'kelas') ? $classPageActive : $classPageInactive }}" href="{{ route('develop') }}">
+                <a class="{{ ($page == 'kelas') ? $classPageActive : $classPageInactive }}" href="{{ route('kelas') }}">
                     <svg class="shrink-0 mt-0.5 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-archive-icon lucide-folder-archive"><circle cx="15" cy="19" r="2"/><path d="M20.9 19.8A2 2 0 0 0 22 18V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h5.1"/><path d="M15 11v-1"/><path d="M15 17v-2"/></svg>
                     Daftar kelas
-                    <div class="ms-auto">
-                        <span class="ms-auto inline-flex items-center gap-1.5 py-px px-1.5 rounded-sm text-[10px] leading-4 font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-300">
-                            DEV
-                        </span>
-                    </div>
                 </a>
                 </li>
                 <!-- End Link -->

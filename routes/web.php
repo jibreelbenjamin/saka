@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KelasController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -22,6 +23,15 @@ Route::middleware('auth')->group(function () {
     })->name('develop');
     
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    // Kelas
+    Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
+    Route::get('/kelas/load', [KelasController::class, 'loadData'])->name('kelas.load');
+    Route::get('/kelas/create', [KelasController::class, 'create'])->name('kelas.create');
+    Route::get('/kelas/{id}', [KelasController::class, 'setting'])->name('kelas.setting');
+    Route::post('/kelas/add', [KelasController::class, 'add'])->name('kelas.create.action');
+    Route::put('/kelas/update/{id}', [KelasController::class, 'update'])->name('kelas.update.action');
+    Route::delete('/kelas/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete.action');
 });
 
 // universal redirect
