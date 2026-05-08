@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\WaliSiswaController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -50,6 +51,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/siswa/add', [SiswaController::class, 'add'])->name('siswa.create.action');
     Route::put('/siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update.action');
     Route::delete('/siswa/delete/{id}', [SiswaController::class, 'delete'])->name('siswa.delete.action');
+
+    // Wali Siswa
+    Route::get('/wali-siswa/{id_siswa}/create', [WaliSiswaController::class, 'create'])->name('wali-siswa.create');
+    Route::get('/wali-siswa/{id_siswa}/{id}', [WaliSiswaController::class, 'setting'])->name('wali-siswa.setting');
+    Route::post('/wali-siswa/{id_siswa}/add', [WaliSiswaController::class, 'add'])->name('wali-siswa.create.action');
+    Route::put('/wali-siswa/{id_siswa}/update/{id}', [WaliSiswaController::class, 'update'])->name('wali-siswa.update.action');
+    Route::delete('/wali-siswa/{id_siswa}/delete/{id}', [WaliSiswaController::class, 'delete'])->name('wali-siswa.delete.action');
 
 });
 
