@@ -6,6 +6,7 @@ use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\SakaGuru;
 
@@ -148,6 +149,53 @@ class GuruController
             );
     }
 }
+    public function updatePassword(Request $request, $id)
+{
+    try {
+        $data = $this->model::where($this->table_primary, $id)->firstOrFail();
+
+        // Rules khusus update password
+        $this->rules = [
+            'password' => 'required|string|min:8|confirmed',
+        ];
+
+        $this->messages = [
+            'password.required' => 'Password guru wajib diisi',
+            'password.string' => 'Password guru harus berupa teks',
+            'password.min' => 'Password guru minimal 8 karakter',
+            'password.confirmed' => 'Konfirmasi password guru tidak sama',
+        ];
+
+        $validate = $request->validate($this->rules, $this->messages);
+
+        $data->update([
+            'password' => Hash::make($validate['password']),
+        ]);
+
+        return $this->successResponse(
+            $data,
+            'Password '.$this->data_title.' berhasil diperbarui',
+            200
+        );
+
+        } catch (ModelNotFoundException $e) {
+            return $this->errorResponse('Data '.$this->data_title.' tidak tersedia', 404);
+
+        } catch (ValidationException $e) {
+            return $this->validationErrorResponse(
+                $e->errors(),
+                'Informasi password '.$this->data_title.' tidak valid',
+                422
+            );
+
+        } catch (\Exception $e) {
+            return $this->errorResponse(
+                'Terjadi kesalahan pada server',
+                500,
+                app()->environment('local') ? [$e->getMessage()] : null
+            );
+        }
+    }
 
     public function destroy($id)
     {

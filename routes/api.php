@@ -35,5 +35,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::delete('/guru/{id}', [GuruController::class, 'destroy'])
         ->name('guru.destroy');
-
+    Route::put('/guru/update-password/{id}', [GuruController::class, 'updatePassword'])
+    ->name('guru.update-password');
 });
