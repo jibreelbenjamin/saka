@@ -34,7 +34,7 @@ class GuruController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $search_keys = ['id_guru', 'nama'];
+        $search_keys = ['nama'];
 
         $query = $this->model::query();
 
