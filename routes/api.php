@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\KelasController;
+use App\Http\Controllers\Api\AdminController;
 
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -34,4 +35,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::delete('/admin/{id}', [AdminController::class, 'destroy'])
         ->name('admin.destroy');
+        
+    Route::put('/admin/update-password/{id}', [AdminController::class, 'updatePassword'])
+        ->name('admin.update-password');
 });

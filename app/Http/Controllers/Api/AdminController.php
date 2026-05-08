@@ -6,6 +6,7 @@ use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\SakaAdmin;
 
@@ -115,9 +116,12 @@ class AdminController
         try {
             $data = $this->model::where($this->table_primary, $id)->firstOrFail();
 
-            // opsional: tambahkan jika ada validasi khusus...
+            $this->rules = [
+                'username' => 'required|string|max:255|unique:saka_admin,username,'.$id.',id_admin',
+                'nama' => 'required|string|max:255',
+            ];
 
-            $validate = $request->validate($rules, $this->messages);
+            $validate = $request->validate($this->rules, $this->messages);
 
             $data->update($validate);
 
@@ -132,6 +136,53 @@ class AdminController
 
         } catch (ValidationException $e) {
             return $this->validationErrorResponse($e->errors(), 'Informasi '.$this->data_title.' tidak valid' , 422);
+
+        } catch (\Exception $e) {
+            return $this->errorResponse(
+                'Terjadi kesalahan pada server',
+                500,
+                app()->environment('local') ? [$e->getMessage()] : null
+            );
+        }
+    }
+        public function updatePassword(Request $request, $id)
+    {
+        try {
+            $data = $this->model::where($this->table_primary, $id)->firstOrFail();
+
+            // Rules khusus update password
+            $this->rules = [
+                'password' => 'required|string|min:8|confirmed',
+            ];
+
+            $this->messages = [
+                'password.required' => 'Password admin wajib diisi',
+                'password.string' => 'Password admin harus berupa teks',
+                'password.min' => 'Password admin minimal 8 karakter',
+                'password.confirmed' => 'Konfirmasi password admin tidak sama',
+            ];
+
+            $validate = $request->validate($this->rules, $this->messages);
+
+            $data->update([
+                'password' => Hash::make($validate['password']),
+            ]);
+
+            return $this->successResponse(
+                $data,
+                'Password '.$this->data_title.' berhasil diperbarui',
+                200
+            );
+
+        } catch (ModelNotFoundException $e) {
+            return $this->errorResponse('Data '.$this->data_title.' tidak tersedia', 404);
+
+        } catch (ValidationException $e) {
+            return $this->validationErrorResponse(
+                $e->errors(),
+                'Informasi password '.$this->data_title.' tidak valid',
+                422
+            );
 
         } catch (\Exception $e) {
             return $this->errorResponse(
