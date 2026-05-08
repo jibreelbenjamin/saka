@@ -20,21 +20,21 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // Siswa
 
-Route::get('/siswa', [SiswaController::class, 'index'])
-    ->name('siswa.index');
+    Route::get('/siswa', [SiswaController::class, 'index'])
+        ->name('siswa.index');
 
-Route::post('/siswa', [SiswaController::class, 'store'])
-    ->name('siswa.store');
+    Route::post('/siswa', [SiswaController::class, 'store'])
+        ->name('siswa.store');
 
-Route::get('/siswa/{id}', [SiswaController::class, 'show'])
-    ->name('siswa.show');
+    Route::get('/siswa/{id}', [SiswaController::class, 'show'])
+        ->name('siswa.show');
 
-Route::put('/siswa/{id}', [SiswaController::class, 'update'])
-    ->name('siswa.update');
+    Route::put('/siswa/{id}', [SiswaController::class, 'update'])
+        ->name('siswa.update');
 
-Route::put('/siswa/update-password/{id}', [SiswaController::class, 'updatePassword'])
-    ->name('siswa.update-password');
+    Route::put('/siswa/update-password/{id}', [SiswaController::class, 'updatePassword'])
+        ->name('siswa.update-password');
 
-Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])
-    ->name('siswa.destroy');
+    Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])
+        ->name('siswa.destroy');
 });
