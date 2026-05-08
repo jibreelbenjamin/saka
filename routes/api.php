@@ -16,4 +16,22 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/kelas/{id}', [KelasController::class, 'show']);
     Route::put('/kelas/{id}', [KelasController::class, 'update']);
     Route::delete('/kelas/{id}', [KelasController::class, 'destroy']);
+
+    Route::put('/admin/update-password/{id}', [AdminController::class, 'updatePassword'])
+        ->name('admin.update-password');
+
+    Route::get('/admin', [AdminController::class, 'index'])
+        ->name('admin.index');
+
+    Route::post('/admin', [AdminController::class, 'store'])
+        ->name('admin.store');
+
+    Route::get('/admin/{id}', [AdminController::class, 'show'])
+        ->name('admin.show');
+
+    Route::put('/admin/{id}', [AdminController::class, 'update'])
+        ->name('admin.update');
+
+    Route::delete('/admin/{id}', [AdminController::class, 'destroy'])
+        ->name('admin.destroy');
 });
