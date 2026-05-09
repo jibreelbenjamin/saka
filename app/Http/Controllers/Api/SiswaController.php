@@ -127,13 +127,13 @@ class SiswaController
         try {
             $data = $this->model::where($this->table_primary, $id)->firstOrFail();
 
-             $this->rules = [
-            'id_kelas' => 'required|exists:saka_kelas,id_kelas',
-            'username' => 'required|string|max:255|unique:saka_siswa,username,'.$id.',id_siswa',
-            'nama' => 'required|string|max:255',
-            'kontak' => 'nullable|string|max:255',
-            'alamat' => 'nullable|string|max:255',
-        ];
+            $this->rules = [
+                'id_kelas' => 'required|exists:saka_kelas,id_kelas',
+                'username' => 'required|string|max:255|unique:saka_siswa,username,'.$id.',id_siswa',
+                'nama' => 'required|string|max:255',
+                'kontak' => 'nullable|string|max:255',
+                'alamat' => 'nullable|string|max:255',
+            ];
 
             $validate = $request->validate($this->rules, $this->messages);
 
