@@ -43,7 +43,7 @@ class SiswaController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $search_keys = ['nama', 'kontak', 'alamat'];
+        $search_keys = ['nama', 'kontak', 'alamat', 'username'];
 
         $query = $this->model::query();
 
