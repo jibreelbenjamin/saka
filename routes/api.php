@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\KelasController;
+use App\Http\Controllers\Api\WaliSiswaController;
 use App\Http\Controllers\Api\AdminController;
 
 Route::post('/login', [AuthController::class, 'login']);
@@ -18,6 +19,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/kelas/{id}', [KelasController::class, 'update']);
     Route::delete('/kelas/{id}', [KelasController::class, 'destroy']);
 
+    // Wali Siswa
+    Route::get('/wali-siswa', [WaliSiswaController::class, 'index']);
+    Route::post('/wali-siswa', [WaliSiswaController::class, 'store']);
+    Route::get('/wali-siswa/{id}', [WaliSiswaController::class, 'show']);
+    Route::put('/wali-siswa/{id}', [WaliSiswaController::class, 'update']);
+    Route::delete('/wali-siswa/{id}', [WaliSiswaController::class, 'destroy']);
+  
     // Admin
     Route::get('/admin', [AdminController::class, 'index']);
     Route::post('/admin', [AdminController::class, 'store']);
