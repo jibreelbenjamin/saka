@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\GuruController;
+use App\Http\Controllers\SiswaController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -32,6 +34,23 @@ Route::middleware('auth')->group(function () {
     Route::post('/kelas/add', [KelasController::class, 'add'])->name('kelas.create.action');
     Route::put('/kelas/update/{id}', [KelasController::class, 'update'])->name('kelas.update.action');
     Route::delete('/kelas/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete.action');
+
+    // Guru
+    Route::get('/guru', [GuruController::class, 'index'])->name('guru');
+    Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create');
+    Route::get('/guru/{id}', [GuruController::class, 'setting'])->name('guru.setting');
+    Route::post('/guru/add', [GuruController::class, 'add'])->name('guru.create.action');
+    Route::put('/guru/update/{id}', [GuruController::class, 'update'])->name('guru.update.action');
+    Route::delete('/guru/delete/{id}', [GuruController::class, 'delete'])->name('guru.delete.action');
+
+    // Siswa
+    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
+    Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
+    Route::get('/siswa/{id}', [SiswaController::class, 'setting'])->name('siswa.setting');
+    Route::post('/siswa/add', [SiswaController::class, 'add'])->name('siswa.create.action');
+    Route::put('/siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update.action');
+    Route::delete('/siswa/delete/{id}', [SiswaController::class, 'delete'])->name('siswa.delete.action');
+
 });
 
 // universal redirect
