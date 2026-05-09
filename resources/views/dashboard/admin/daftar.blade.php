@@ -1,7 +1,7 @@
 @php
     $page = 'admin';
     $page_variable = 'admin';
-    $page_title = 'Admin';
+    $page_title = 'admin';
     $data_colum = 5;
 @endphp
 <x-app :page='$page'>
