@@ -2,7 +2,7 @@
     $page = 'admin';
     $page_variable = 'admin';
     $page_title = 'admin';
-    $data_colum = 5;
+    $data_colum = 4;
 @endphp
 <x-app :page='$page'>
     <div class="p-2 sm:p-5 sm:py-0 md:pt-5 space-y-5">
