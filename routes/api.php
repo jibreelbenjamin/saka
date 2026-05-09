@@ -18,24 +18,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/kelas/{id}', [KelasController::class, 'update']);
     Route::delete('/kelas/{id}', [KelasController::class, 'destroy']);
 
-    Route::put('/admin/update-password/{id}', [AdminController::class, 'updatePassword'])
-        ->name('admin.update-password');
-
-    Route::get('/admin', [AdminController::class, 'index'])
-        ->name('admin.index');
-
-    Route::post('/admin', [AdminController::class, 'store'])
-        ->name('admin.store');
-
-    Route::get('/admin/{id}', [AdminController::class, 'show'])
-        ->name('admin.show');
-
-    Route::put('/admin/{id}', [AdminController::class, 'update'])
-        ->name('admin.update');
-
-    Route::delete('/admin/{id}', [AdminController::class, 'destroy'])
-        ->name('admin.destroy');
-        
-    Route::put('/admin/update-password/{id}', [AdminController::class, 'updatePassword'])
-        ->name('admin.update-password');
+    // Admin
+    Route::get('/admin', [AdminController::class, 'index']);
+    Route::post('/admin', [AdminController::class, 'store']);
+    Route::get('/admin/{id}', [AdminController::class, 'show']);
+    Route::put('/admin/{id}', [AdminController::class, 'update']);
+    Route::delete('/admin/{id}', [AdminController::class, 'destroy']);
+    Route::put('/admin/update-password/{id}', [AdminController::class, 'updatePassword']);
 });
