@@ -32,6 +32,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/kelas/add', [KelasController::class, 'add'])->name('kelas.create.action');
     Route::put('/kelas/update/{id}', [KelasController::class, 'update'])->name('kelas.update.action');
     Route::delete('/kelas/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete.action');
+
+    // Admin
+    Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/admin/create', [AdminController::class, 'create']);
+    Route::post('/admin/create', [AdminController::class, 'add']);
+    Route::get('/admin/setting/{id}', [AdminController::class, 'setting']);
+    Route::put('/admin/update/{id}', [AdminController::class, 'update']);
+    Route::delete('/admin/delete/{id}', [AdminController::class, 'delete']);
+    Route::put('/admin/update-password/{id}', [AdminController::class, 'updatePassword']);
 });
 
 // universal redirect
