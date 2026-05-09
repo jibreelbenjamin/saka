@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\KelasController;
 use App\Http\Controllers\Api\SiswaController;
+use App\Http\Controllers\Api\WaliSiswaController;
+use App\Http\Controllers\Api\AdminController;
 
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -25,4 +27,19 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/siswa/{id}', [SiswaController::class, 'update']);
     Route::delete('/siswa/{id}', [SiswaController::class, 'destroy']);
     Route::put('/siswa/update-password/{id}', [SiswaController::class, 'updatePassword']);
+  
+    // Wali Siswa
+    Route::get('/wali-siswa', [WaliSiswaController::class, 'index']);
+    Route::post('/wali-siswa', [WaliSiswaController::class, 'store']);
+    Route::get('/wali-siswa/{id}', [WaliSiswaController::class, 'show']);
+    Route::put('/wali-siswa/{id}', [WaliSiswaController::class, 'update']);
+    Route::delete('/wali-siswa/{id}', [WaliSiswaController::class, 'destroy']);
+  
+    // Admin
+    Route::get('/admin', [AdminController::class, 'index']);
+    Route::post('/admin', [AdminController::class, 'store']);
+    Route::get('/admin/{id}', [AdminController::class, 'show']);
+    Route::put('/admin/{id}', [AdminController::class, 'update']);
+    Route::delete('/admin/{id}', [AdminController::class, 'destroy']);
+    Route::put('/admin/update-password/{id}', [AdminController::class, 'updatePassword']);
 });
