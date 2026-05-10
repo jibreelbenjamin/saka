@@ -272,12 +272,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="{{ ($page == 'guru') ? $classPageActive : $classPageInactive }}" href="{{ route('develop') }}">
+                        <a class="{{ ($page == 'guru') ? $classPageActive : $classPageInactive }}" href="{{ route('guru') }}">
                         Data guru
                         <div class="ms-auto">
-                            <span class="ms-auto inline-flex items-center gap-1.5 py-px px-1.5 rounded-sm text-[10px] leading-4 font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-300">
-                                DEV
-                            </span>
                         </div>
                         </a>
                     </li>
