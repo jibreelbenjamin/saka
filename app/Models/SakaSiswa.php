@@ -22,6 +22,8 @@ class SakaSiswa extends Authenticatable
         'nama',
         'kontak',
         'alamat',
+        'status',
+        'tahun_lulus',
     ];
 
     protected $hidden = [
@@ -31,6 +33,8 @@ class SakaSiswa extends Authenticatable
 
     protected $casts = [
         'password' => 'hashed',
+        'status' => 'string',
+        'tahun_lulus' => 'integer',
     ];
 
     // Relasi

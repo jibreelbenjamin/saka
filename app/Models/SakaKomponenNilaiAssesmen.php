@@ -17,6 +17,7 @@ class SakaKomponenNilaiAssesmen extends Model
         'kode_komponen_assesmen',
         'id_mapel',
         'id_guru',
+        'id_tahun_ajaran',
         'nama_komponen',
         'kkm',
         'is_active',
@@ -36,6 +37,11 @@ class SakaKomponenNilaiAssesmen extends Model
     public function guru()
     {
         return $this->belongsTo(SakaGuru::class, 'id_guru', 'id_guru');
+    }
+
+    public function tahunAjaran()
+    {
+        return $this->belongsTo(SakaTahunAjaran::class, 'id_tahun_ajaran', 'id_tahun_ajaran');
     }
 
     public function nilaiAssesmen()
