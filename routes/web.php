@@ -16,7 +16,7 @@ Route::middleware('auth')->group(function () {
         return view('dashboard.home');
     })->name('home');
 
-    Route::get('/develop', function (Request $request) {
+    Route::get('/develop', function (Request  $request) {
         return redirect()
         ->back()
         ->with('warningToast', 'Sedang dalam pengembangan')
@@ -35,13 +35,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/kelas/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete.action');
 
     // Admin
-    Route::get('/admin', [AdminController::class, 'index']);
-    Route::get('/admin/create', [AdminController::class, 'create']);
-    Route::post('/admin/create', [AdminController::class, 'add']);
-    Route::get('/admin/setting/{id}', [AdminController::class, 'setting']);
-    Route::put('/admin/update/{id}', [AdminController::class, 'update']);
-    Route::delete('/admin/delete/{id}', [AdminController::class, 'delete']);
-    Route::put('/admin/update-password/{id}', [AdminController::class, 'updatePassword']);
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/admin/create', [AdminController::class, 'add'])->name('admin.create.action');
+    Route::get('/admin/setting/{id}', [AdminController::class, 'setting'])->name('admin.setting');
+    Route::put('/admin/update/{id}', [AdminController::class, 'update'])->name('admin.update.action');
+    Route::delete('/admin/delete/{id}', [AdminController::class, 'delete'])->name('admin.delete.action');
+    Route::put('/admin/update-password/{id}', [AdminController::class, 'updatePassword'])->name('admin.update.password');
 });
 
 // universal redirect
