@@ -16,6 +16,7 @@ class SakaNilaiAssesmen extends Model
     protected $fillable = [
         'id_komponen_nilai_assesmen',
         'id_siswa',
+        'id_tahun_ajaran',
         'nilai',
         'simpanan_nilai_terpakai',
     ];
@@ -34,5 +35,10 @@ class SakaNilaiAssesmen extends Model
     public function siswa()
     {
         return $this->belongsTo(SakaSiswa::class, 'id_siswa', 'id_siswa');
+    }
+
+    public function tahunAjaran()
+    {
+        return $this->belongsTo(SakaTahunAjaran::class, 'id_tahun_ajaran', 'id_tahun_ajaran');
     }
 }
