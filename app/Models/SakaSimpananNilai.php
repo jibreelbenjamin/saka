@@ -20,16 +20,12 @@ class SakaSimpananNilai extends Model
         'nilai',
         'terpakai_harian',
         'terpakai_assesmen',
-        'max_pemakaian',
-        'nilai_prioritas',
     ];
 
     protected $casts = [
         'nilai' => 'decimal:2',
         'terpakai_harian' => 'decimal:2',
         'terpakai_assesmen' => 'decimal:2',
-        'max_pemakaian' => 'decimal:2',
-        'nilai_prioritas' => 'decimal:2',
     ];
 
     // Relasi

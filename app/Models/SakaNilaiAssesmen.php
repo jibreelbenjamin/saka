@@ -17,10 +17,12 @@ class SakaNilaiAssesmen extends Model
         'id_komponen_nilai_assesmen',
         'id_siswa',
         'nilai',
+        'simpanan_nilai_terpakai',
     ];
 
     protected $casts = [
         'nilai' => 'decimal:2',
+        'simpanan_nilai_terpakai' => 'decimal:2',
     ];
 
     // Relasi

@@ -16,8 +16,6 @@ return new class extends Migration
             $table->decimal('nilai', 8, 2);
             $table->decimal('terpakai_harian', 8, 2);
             $table->decimal('terpakai_assesmen', 8, 2);
-            $table->decimal('max_pemakaian', 8, 2)->default(100);
-            $table->decimal('nilai_prioritas', 8, 2)->default(75);
             $table->unique(['id_mapel', 'id_guru', 'id_siswa'], 'simpanan_nilai_unique');
             $table->timestamps();
         });
