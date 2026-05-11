@@ -19,7 +19,7 @@ class WaliSiswaController extends Controller
         'nama_wali'   => 'required|string|max:255',
         'kontak'      => 'required|string|digits_between:10,15',
         'alamat'      => 'required|string|max:255',
-        'status_wali' => 'required|string|in:orang tua, orang tua angkat, kakak, perwakilan'
+        'status_wali' => 'required|string|max:255'
     ];
 
     protected $messages = [
