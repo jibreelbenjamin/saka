@@ -160,6 +160,102 @@
             </div>
             <!-- End Card -->
 
+            <!-- Optional Card -->
+            <div class="p-6 bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+                <div class=" w-full flex justify-between">
+                        <div class="w-full text-sm">
+                            <p class="font-semibold text-gray-800 dark:text-neutral-200">Daftar wali siswa</p>
+                            <p class="text-xs text-gray-500 dark:text-neutral-500">{{ empty($data['waliSiswa']) ? 'Tidak ada wali siswa' : 'Total '.count($data['waliSiswa']).' data wali siswa' }}</p>
+                        </div>
+                        <div>
+                            <a href="{{route('wali-siswa.create', $data->id_siswa)}}" class="py-2 px-3 inline-flex justify-center items-center gap-x-2 text-start text-nowrap text-xs bg-blue-600 border border-blue-600 text-white text-sm font-medium rounded-lg shadow-2xs align-middle hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:ring-1 focus:ring-blue-300 dark:focus:ring-blue-500">
+                                Tambah wali
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- List Group -->
+                    <ul class="space-y-3">
+
+                    @forelse ($data['waliSiswa'] as $item)
+                    <li class="py-3 border-b last:border-b-0 border-gray-200 dark:border-neutral-700">
+                        <div class="flex items-center justify-between gap-x-4 gap-y-2 p-3">
+                            <div class="min-w-0 space-y-1">
+                                <p class="font-medium text-sm text-gray-800 dark:text-neutral-200 truncate">
+                                    {{$item->nama_wali}}
+                                </p>
+                                <p class="text-xs text-gray-500 dark:text-neutral-500 truncate">
+                                    {{$item->alamat}}
+                                </p>
+                                <p class="text-xs text-gray-500 dark:text-neutral-500 truncate">
+                                    {{$item->kontak}}
+                                </p>
+                                <p class="text-xs text-gray-500 dark:text-neutral-500">
+                                    Status:
+                                    <span class="text-xs text-gray-500 dark:text-neutral-500">
+                                        {{$item->status_wali}}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="size-px whitespace-nowrap px-6 py-1">
+                                <div class="relative inline-flex">
+                                    <a href="{{ route('wali-siswa.setting', [$data->id_siswa, $item->id_wali_siswa]) }}" type="button" class="size-7 inline-flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
+                                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    @empty
+                    <div class="py-3">
+                        <svg class="w-48 mx-auto mb-4" width="178" height="90" viewBox="0 0 178 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="27" y="50.5" width="124" height="39" rx="7.5" fill="currentColor" class="fill-white dark:fill-neutral-800" />
+                        <rect x="27" y="50.5" width="124" height="39" rx="7.5" stroke="currentColor" class="stroke-gray-50 dark:stroke-neutral-700/10" />
+                        <rect x="34.5" y="58" width="24" height="24" rx="4" fill="currentColor" class="fill-gray-50 dark:fill-neutral-700/30" />
+                        <rect x="66.5" y="61" width="60" height="6" rx="3" fill="currentColor" class="fill-gray-50 dark:fill-neutral-700/30" />
+                        <rect x="66.5" y="73" width="77" height="6" rx="3" fill="currentColor" class="fill-gray-50 dark:fill-neutral-700/30" />
+                        <rect x="19.5" y="28.5" width="139" height="39" rx="7.5" fill="currentColor" class="fill-white dark:fill-neutral-800" />
+                        <rect x="19.5" y="28.5" width="139" height="39" rx="7.5" stroke="currentColor" class="stroke-gray-100 dark:stroke-neutral-700/30" />
+                        <rect x="27" y="36" width="24" height="24" rx="4" fill="currentColor" class="fill-gray-100 dark:fill-neutral-700/70" />
+                        <rect x="59" y="39" width="60" height="6" rx="3" fill="currentColor" class="fill-gray-100 dark:fill-neutral-700/70" />
+                        <rect x="59" y="51" width="92" height="6" rx="3" fill="currentColor" class="fill-gray-100 dark:fill-neutral-700/70" />
+                        <g filter="url(#filter3)">
+                            <rect x="12" y="6" width="154" height="40" rx="8" fill="currentColor" class="fill-white dark:fill-neutral-800" shape-rendering="crispEdges" />
+                            <rect x="12.5" y="6.5" width="153" height="39" rx="7.5" stroke="currentColor" class="stroke-gray-100 dark:stroke-neutral-700/60" shape-rendering="crispEdges" />
+                            <rect x="20" y="14" width="24" height="24" rx="4" fill="currentColor" class="fill-gray-200 dark:fill-neutral-700 " />
+                            <rect x="52" y="17" width="60" height="6" rx="3" fill="currentColor" class="fill-gray-200 dark:fill-neutral-700" />
+                            <rect x="52" y="29" width="106" height="6" rx="3" fill="currentColor" class="fill-gray-200 dark:fill-neutral-700" />
+                        </g>
+                        <defs>
+                            <filter id="filter3" x="0" y="0" width="178" height="64" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="6" />
+                            <feGaussianBlur stdDeviation="6" />
+                            <feComposite in2="hardAlpha" operator="out" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1187_14810" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1187_14810" result="shape" />
+                            </filter>
+                        </defs>
+                        </svg>
+
+                        <div class="max-w-sm mx-auto text-sm text-center">
+                            <p class="mt-2 font-medium text-gray-800 dark:text-neutral-200">
+                                Tidak ada wali siswa tercatat
+                            </p>
+                            <p class="mb-5 text-sm text-gray-500 dark:text-neutral-500">
+                                Daftar data wali siswa akan tampil disini
+                            </p>
+                        </div>
+                    </div>
+                    @endforelse
+
+                    </ul>
+                    <!-- End List Group -->
+                </div>
+                <!-- End Optional Card -->
+
             <!-- Card -->
             <div class="bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
                 <div class="p-6 w-full flex justify-between">
