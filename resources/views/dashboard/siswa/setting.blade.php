@@ -252,22 +252,18 @@
                         <div class="flex gap-x-3">
                             <div class="grow">
                                 <p class="font-medium text-sm text-gray-800 dark:text-neutral-200">
-                                    Bu Siti Mursidah
-                                    {{-- tampilkan nama wali siswa --}}
+                                    {{$item->nama_wali}}
                                 </p>
                                 <p class="text-xs text-gray-500 dark:text-neutral-500">
-                                    Jl. Jalan aja disitu blok A12
-                                    {{-- tampilkan alamat wali siswa --}}
+                                    {{$item->alamat}}
                                 </p>
                                 <p class="text-xs text-gray-500 dark:text-neutral-500">
-                                    0987654321
-                                    {{-- tampilkan no telp wali siswa --}}
+                                    {{$item->kontak}}
                                 </p>
                                 <p class="text-xs text-gray-500 dark:text-neutral-500">
                                     Status: 
                                     <span>
-                                        orang tua
-                                        {{-- tampilkan status wali siswa --}}
+                                        {{$item->status_wali}}
                                     </span>
                                 </p>
                             </div>
