@@ -4,12 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelasController;
-<<<<<<< HEAD
 use App\Http\Controllers\AdminController;
-=======
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
->>>>>>> cbbca4bb3e2cbc91d709cf8730a72b6ed1793d9b
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -39,8 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/kelas/update/{id}', [KelasController::class, 'update'])->name('kelas.update.action');
     Route::delete('/kelas/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete.action');
 
-<<<<<<< HEAD
-    // Admin
+
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/admin/create', [AdminController::class, 'create']);
     Route::post('/admin/create', [AdminController::class, 'add']);
@@ -48,7 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin/update/{id}', [AdminController::class, 'update']);
     Route::delete('/admin/delete/{id}', [AdminController::class, 'delete']);
     Route::put('/admin/update-password/{id}', [AdminController::class, 'updatePassword']);
-=======
+
     // Guru
     Route::get('/guru', [GuruController::class, 'index'])->name('guru');
     Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create');
@@ -57,7 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/guru/update/{id}', [GuruController::class, 'update'])->name('guru.update.action');
     Route::delete('/guru/delete/{id}', [GuruController::class, 'delete'])->name('guru.delete.action');
 
-    // Siswa
+     //Siswa
     Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
     Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
     Route::get('/siswa/{id}', [SiswaController::class, 'setting'])->name('siswa.setting');
@@ -65,7 +61,14 @@ Route::middleware('auth')->group(function () {
     Route::put('/siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update.action');
     Route::delete('/siswa/delete/{id}', [SiswaController::class, 'delete'])->name('siswa.delete.action');
 
->>>>>>> cbbca4bb3e2cbc91d709cf8730a72b6ed1793d9b
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/admin/create', [AdminController::class, 'add'])->name('admin.create.action');
+    Route::get('/admin/setting/{id}', [AdminController::class, 'setting'])->name('admin.setting');
+    Route::put('/admin/update/{id}', [AdminController::class, 'update'])->name('admin.update.action');
+    Route::delete('/admin/delete/{id}', [AdminController::class, 'delete'])->name('admin.delete.action');
+    Route::put('/admin/update-password/{id}', [AdminController::class, 'updatePassword'])->name('admin.update-password.action');
+
 });
 
 // universal redirect
