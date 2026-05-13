@@ -129,6 +129,31 @@ class SiswaController extends Controller
         }
     }
 
+    public function updatePassword(Request $request, $id)
+    {
+        $data = $this->model::where($this->primary, $id)->firstOrFail();
+
+        if($data){
+            $rules = [
+                'password' => 'required|string|min:8|max:255|confirmed',
+            ];
+
+            $messages = [
+                'password.required' => 'Password wajib diisi',
+                'password.min' => 'Password minimal 8 karakter',
+                'password.max' => 'Password maksimal 255 karakter',
+                'password.confirmed' => 'Konfirmasi password tidak cocok',
+            ];
+
+            $validate = $request->validate($rules, $messages);
+            $data->update(['password' => bcrypt($validate['password'])]);
+
+            return redirect()->route($this->route)->with(['successToast' => ucfirst($this->echo).' berhasil diperbarui']);
+        } else {
+            return redirect()->route($this->route)->withErrors(['message' => ucfirst($this->echo).' tidak ditemukan']);
+        }
+    }   
+
     public function delete($id)
     {
         $this->model::findOrFail($id)->delete();
