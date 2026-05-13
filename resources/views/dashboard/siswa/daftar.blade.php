@@ -62,13 +62,19 @@
 
                                     <th scope="col">
                                         <p class="px-5 py-2.5 text-start flex items-center gap-x-1 text-sm text-nowrap font-normal text-gray-500 dark:text-neutral-500">
+                                            Username
+                                        </p>
+                                    </th>
+
+                                    <th scope="col">
+                                        <p class="px-5 py-2.5 text-start flex items-center gap-x-1 text-sm text-nowrap font-normal text-gray-500 dark:text-neutral-500">
                                             Nama
                                         </p>
                                     </th>
 
                                     <th scope="col">
                                         <p class="px-5 py-2.5 text-start flex items-center gap-x-1 text-sm text-nowrap font-normal text-gray-500 dark:text-neutral-500">
-                                            Username
+                                            Kelas
                                         </p>
                                     </th>
 
@@ -81,12 +87,6 @@
                                     <th scope="col">
                                         <p class="px-5 py-2.5 text-start flex items-center gap-x-1 text-sm text-nowrap font-normal text-gray-500 dark:text-neutral-500">
                                             Alamat
-                                        </p>
-                                    </th>
-
-                                    <th scope="col">
-                                        <p class="px-5 py-2.5 text-start flex items-center gap-x-1 text-sm text-nowrap font-normal text-gray-500 dark:text-neutral-500">
-                                            Kelas
                                         </p>
                                     </th>
 
@@ -109,6 +109,12 @@
                                             </span>
                                         </td>
 
+                                        <td class="size-px px-4 py-1">
+                                            <span class="text-sm text-gray-600 dark:text-neutral-400">
+                                                {{ $item->username }}
+                                            </span>
+                                        </td>
+
                                         <td class="size-px px-4 py-1 relative group">
                                             <div class="w-full flex items-center gap-x-3">
                                             <div class="grow">
@@ -118,10 +124,10 @@
                                             </div>
                                             </div>
                                         </td>
-
+                                        
                                         <td class="size-px px-4 py-1">
                                             <span class="text-sm text-gray-600 dark:text-neutral-400">
-                                                {{ $item->username }}
+                                                {{ ($item->kelas)->nama_kelas ?? '-' }}
                                             </span>
                                         </td>
 
@@ -134,12 +140,6 @@
                                         <td class="size-px px-4 py-1">
                                             <span class="text-sm text-gray-600 dark:text-neutral-400">
                                                 {{ $item->alamat }}
-                                            </span>
-                                        </td>
-
-                                        <td class="size-px px-4 py-1">
-                                            <span class="text-sm text-gray-600 dark:text-neutral-400">
-                                                {{ optional($item->kelas)->nama_kelas ?? '-' }}
                                             </span>
                                         </td>
 
