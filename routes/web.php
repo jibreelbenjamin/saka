@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/kelas/update/{id}', [KelasController::class, 'update'])->name('kelas.update.action');
     Route::delete('/kelas/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete.action');
 
+<<<<<<< HEAD
 
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/admin/create', [AdminController::class, 'create']);
@@ -61,6 +62,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update.action');
     Route::delete('/siswa/delete/{id}', [SiswaController::class, 'delete'])->name('siswa.delete.action');
 
+=======
+    // Admin
+>>>>>>> 1753ad1276207d97a2e8961705721b4e6591e2ca
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
     Route::post('/admin/create', [AdminController::class, 'add'])->name('admin.create.action');
@@ -68,7 +72,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin/update/{id}', [AdminController::class, 'update'])->name('admin.update.action');
     Route::delete('/admin/delete/{id}', [AdminController::class, 'delete'])->name('admin.delete.action');
     Route::put('/admin/update-password/{id}', [AdminController::class, 'updatePassword'])->name('admin.update-password.action');
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1753ad1276207d97a2e8961705721b4e6591e2ca
 });
 
 // universal redirect
