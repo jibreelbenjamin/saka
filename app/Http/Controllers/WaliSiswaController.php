@@ -41,6 +41,11 @@ class WaliSiswaController extends Controller
     {
         $this->model_siswa::findOrFail($id_siswa);
 
+        $waliSiswa = $this->model::where('id_siswa', $id_siswa)->count();
+        if ($waliSiswa >= 2) {
+            return redirect()->route($this->route, $id_siswa)->withErrors(['message' => 'Wali siswa tidak boleh lebih dari 2 orang'])->withInput();
+        }
+
         $validate = $request->validate($this->rules, $this->messages);
         $validate['id_siswa'] = $id_siswa;
 
