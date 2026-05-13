@@ -34,7 +34,6 @@ class SiswaController extends Controller
         'nama.string' => 'Nama harus berupa teks',
         'nama.max' => 'Nama maksimal 255 karakter',
         'kontak.required' => 'Kontak wajib diisi',
-        'kontak.digits_between' => 'Kontak harus berupa angka dengan panjang antara 10-17 digit',
         'alamat.required' => 'Alamat wajib diisi',
         'alamat.max' => 'Alamat maksimal 255 karakter',
         'id_kelas.required' => 'Kelas wajib diisi',
