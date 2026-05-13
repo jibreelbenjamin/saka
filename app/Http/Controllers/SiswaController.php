@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SakaSiswa;
+use App\Models\SakaKelas;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
@@ -79,7 +80,8 @@ class SiswaController extends Controller
 
     public function create()
     {
-        return view($this->view.'.form');
+        $data = SakaKelas::all();
+        return view($this->view.'.form', compact('data'));
     }
 
     public function add(Request $request)
@@ -94,9 +96,10 @@ class SiswaController extends Controller
     public function setting($id)
     {
         $data = $this->model::find($id);
+        $kelas = SakaKelas::all();
 
         if($data){
-            return view($this->view.'.setting', compact('data'));
+            return view($this->view.'.setting', compact('data', 'kelas'));
         } else {
             return redirect()->route($this->route)->withErrors(['message' => ucfirst($this->echo).' tidak ditemukan']);
         }
