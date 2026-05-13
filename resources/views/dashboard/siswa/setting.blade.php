@@ -252,7 +252,7 @@
                         <div>
                             @if(count($data['waliSiswa'] ?? []) >= 2)
                                 <div class="relative inline-flex group">
-                                    <button type="button" class="py-2 px-3 inline-flex justify-center items-center gap-x-2 text-start text-nowrap text-xs bg-red-400 border border-red-400 text-white text-sm font-medium rounded-lg shadow-2xs align-middle cursor-not-allowed" disabled>
+                                    <button type="button" class="py-2 px-3 inline-flex justify-center items-center gap-x-2 text-start text-nowrap text-xs text-gray-400 text-sm font-medium rounded-lg shadow-2xs align-middle cursor-not-allowed disabled">
                                         Tambah wali
                                     </button>
                                     <span class="pointer-events-none absolute left-1/2 -top-9 z-10 hidden w-max -translate-x-1/2 rounded-md bg-gray-900 px-2.5 py-1 text-xs text-white shadow-lg group-hover:block dark:bg-neutral-700">
@@ -272,7 +272,7 @@
 
                     @forelse ($data['waliSiswa'] as $item)
                     <li class="py-3 border-b last:border-b-0 border-gray-200 dark:border-neutral-700">
-                        <div class="flex items-center justify-between gap-x-4 gap-y-2 p-3">
+                        <div class="flex items-center justify-between gap-x-4 gap-y-2">
                             <div class="min-w-0 space-y-1">
                                 <p class="font-medium text-sm text-gray-800 dark:text-neutral-200 truncate">
                                     {{$item->nama_wali}}
