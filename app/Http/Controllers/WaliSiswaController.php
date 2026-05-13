@@ -17,8 +17,8 @@ class WaliSiswaController extends Controller
 
     protected $rules = [
         'nama_wali'   => 'required|string|max:255',
-        'kontak'      => 'required|string|digits_between:10,15',
-        'alamat'      => 'required|string|max:255',
+        'kontak'      => 'nullable|string|digits_between:10,15',
+        'alamat'      => 'nullable|string|max:255',
         'status_wali' => 'required|string|max:255'
     ];
 
@@ -26,9 +26,7 @@ class WaliSiswaController extends Controller
         'nama_wali.required'      => 'Nama wali wajib diisi',
         'nama_wali.string'        => 'Nama wali harus berupa teks',
         'nama_wali.max'           => 'Nama wali maksimal 255 karakter',
-        'kontak.required'         => 'Kontak wajib diisi',
         'kontak.digits_between'   => 'Kontak harus terdiri dari 10 sampai 15 digit',
-        'alamat.required'         => 'Alamat wajib diisi',
         'alamat.max'              => 'Alamat maksimal 255 karakter',
         'status_wali.required'    => 'Status wali wajib diisi',
         'status_wali.in'          => 'Status wali tidak valid'
