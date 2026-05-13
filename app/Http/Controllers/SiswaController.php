@@ -18,7 +18,7 @@ class SiswaController extends Controller
         'username' => 'required|string|max:255|unique:saka_siswa,username',
         'password' => 'required|string|min:8',
         'nama' => 'required|max:255',
-        'kontak' => 'required|string|digits_between:10,17',
+        'kontak' => 'required|string',
         'alamat' => 'required|max:255',
         'id_kelas' => 'required|exists:saka_kelas,id_kelas',
     ];
@@ -46,28 +46,12 @@ class SiswaController extends Controller
         $search = $request->input('search');
         $search_keys = ['nama', 'kontak', 'alamat', 'username'];
 
-        $query = $this->model::query();
+        $query = $this->model::with('kelas');
 
-        $relations = [];
-        foreach ($search_keys as $key) {
-            if (str_contains($key, '.')) {
-                $relation = explode('.', $key)[0];
-                $relations[] = $relation;
-            }
-        }
-        $query->with(array_unique($relations));
-        
         if ($search) {
             $query->where(function($q) use ($search, $search_keys) {
                 foreach ($search_keys as $key) {
-                    if (str_contains($key, '.')) {
-                        [$relation, $column] = explode('.', $key);
-                        $q->orWhereHas($relation, function($q2) use ($column, $search) {
-                            $q2->where($column, 'LIKE', "%{$search}%");
-                        });
-                    } else {
-                        $q->orWhere($key, 'LIKE', "%{$search}%");
-                    }
+                    $q->orWhere($key, 'LIKE', "%{$search}%");
                 }
             });
         }

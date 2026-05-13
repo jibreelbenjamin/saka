@@ -58,7 +58,7 @@
                                     @foreach ($kelas as $item)
                                     <option value="{{ $item->id_kelas }}" {{ (old('id_kelas') ?? $data->id_kelas) == $item->id_kelas ? 'selected' : '' }} data-hs-select-option='{
                                         "title": "{{ addslashes($item->nama_kelas) }}",
-                                        "description": "{{ addslashes('Tingkat '.$item->tingkat) }}"
+                                        "description": "{{ addslashes($item->kode_kelas) }}"
                                         }'>
                                         {{ $item->nama_kelas }}
                                     </option>
