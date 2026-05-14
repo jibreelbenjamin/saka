@@ -16,7 +16,7 @@ class GuruController extends Controller
     protected $rules = [
         'username' => 'required|string|max:255|unique:saka_guru,username',
         'nama' => 'required|max:255',
-        'password' => 'required|string|min:8',
+        'password' => 'required|confirmed|string|min:8',
     ];
 
     protected $messages = [
@@ -29,6 +29,7 @@ class GuruController extends Controller
         'nama.max' => 'Nama maksimal 255 karakter',
         'password.required' => 'Password wajib diisi',
         'password.min' => 'Password minimal 8 karakter',
+        'password.confirmed' => 'Konfirmasi password tidak cocok',
     ];
 
     public function index(Request $request)
@@ -119,6 +120,31 @@ class GuruController extends Controller
             return redirect()->route($this->route)->withErrors(['message' => ucfirst($this->echo).' tidak ditemukan']);
         }
     }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $data = $this->model::where($this->primary, $id)->firstOrFail();
+
+        if($data){
+            $rules = [
+                'password' => 'required|string|min:8|max:255|confirmed',
+            ];
+
+            $messages = [
+                'password.required' => 'Password wajib diisi',
+                'password.min' => 'Password minimal 8 karakter',
+                'password.max' => 'Password maksimal 255 karakter',
+                'password.confirmed' => 'Konfirmasi password tidak cocok',
+            ];
+
+            $validate = $request->validate($rules, $messages);
+            $data->update(['password' => bcrypt($validate['password'])]);
+
+            return redirect()->route($this->route)->with(['successToast' => ucfirst($this->echo).' berhasil diperbarui']);
+        } else {
+            return redirect()->route($this->route)->withErrors(['message' => ucfirst($this->echo).' tidak ditemukan']);
+        }
+    }   
 
     public function delete($id)
     {

@@ -62,13 +62,13 @@
 
                                     <th scope="col">
                                         <p class="px-5 py-2.5 text-start flex items-center gap-x-1 text-sm text-nowrap font-normal text-gray-500 dark:text-neutral-500">
-                                            Nama
+                                            Username
                                         </p>
                                     </th>
 
-                                    <th scope="col">
+                                    <th scope="col" class="min-w-72">
                                         <p class="px-5 py-2.5 text-start flex items-center gap-x-1 text-sm text-nowrap font-normal text-gray-500 dark:text-neutral-500">
-                                            Username
+                                            Nama
                                         </p>
                                     </th>
 
@@ -95,16 +95,20 @@
                                             <div class="w-full flex items-center gap-x-3">
                                             <div class="grow">
                                                 <span class="text-sm font-medium text-gray-800 dark:text-neutral-200">
-                                                {{ $item->nama }}
+                                                {{ $item->username }}
                                                 </span>
                                             </div>
                                             </div>
                                         </td>
 
-                                        <td class="size-px px-4 py-1">
-                                            <span class="text-sm text-gray-600 dark:text-neutral-400">
-                                                {{ $item->username }}
-                                            </span>
+                                        <td class="size-px px-4 py-1 relative group">
+                                            <div class="w-full flex items-center gap-x-3">
+                                            <div class="grow">
+                                                <span class="text-sm font-medium text-gray-800 dark:text-neutral-200">
+                                                {{ $item->nama }}
+                                                </span>
+                                            </div>
+                                            </div>
                                         </td>
 
                                         <td class="size-px whitespace-nowrap px-4 py-1">

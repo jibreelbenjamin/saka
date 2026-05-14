@@ -44,7 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/guru/add', [GuruController::class, 'add'])->name('guru.create.action');
     Route::put('/guru/update/{id}', [GuruController::class, 'update'])->name('guru.update.action');
     Route::delete('/guru/delete/{id}', [GuruController::class, 'delete'])->name('guru.delete.action');
-  
+    Route::put('/guru/update-password/{id}', [GuruController::class, 'updatePassword'])->name('guru.update-password.action');
+
     // Siswa
     Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
     Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
