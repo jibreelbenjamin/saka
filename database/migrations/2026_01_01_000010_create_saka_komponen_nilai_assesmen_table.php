@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('kode_komponen_assesmen', 255)->unique();
             $table->foreignId('id_mapel')->constrained('saka_mapel', 'id_mapel')->onDelete('cascade');
             $table->foreignId('id_guru')->constrained('saka_guru', 'id_guru')->onDelete('cascade');
+            $table->foreignId('id_tahun_ajaran')->constrained('saka_tahun_ajaran', 'id_tahun_ajaran')->onDelete('cascade');
             $table->string('nama_komponen', 255);
             $table->integer('kkm')->default(75);
             $table->tinyInteger('is_active')->default(1);

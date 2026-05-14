@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nama', 255);
             $table->string('kontak', 255)->nullable();
             $table->string('alamat', 255)->nullable();
+            $table->enum('status', ['aktif', 'lulus', 'dropout'])->default('aktif');
+            $table->integer('tahun_lulus')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
