@@ -7,8 +7,6 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
-use App\Http\Controllers\GuruController;
-use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\WaliSiswaController;
 
 Route::middleware('guest')->group(function () {
