@@ -16,10 +16,10 @@ class SiswaController extends Controller
 
     protected $rules = [
         'username' => 'required|string|max:255|unique:saka_siswa,username',
-        'password' => 'required|string|min:8',
+        'password' => 'required|confirmed|string|min:8',
         'nama' => 'required|max:255',
-        'kontak' => 'required|string',
-        'alamat' => 'required|max:255',
+        'kontak' => 'nullable|string',
+        'alamat' => 'nullable|max:255',
         'id_kelas' => 'required|exists:saka_kelas,id_kelas',
     ];
 
@@ -30,11 +30,11 @@ class SiswaController extends Controller
         'username.unique' => 'Username sudah digunakan',
         'password.required' => 'Password wajib diisi',
         'password.min' => 'Password minimal 8 karakter',
+        'password.confirmed' => 'Konfirmasi password tidak cocok',
         'nama.required' => 'Nama wajib diisi',
         'nama.string' => 'Nama harus berupa teks',
         'nama.max' => 'Nama maksimal 255 karakter',
-        'kontak.required' => 'Kontak wajib diisi',
-        'alamat.required' => 'Alamat wajib diisi',
+        'kontak.string' => 'Kontak harus berupa teks',
         'alamat.max' => 'Alamat maksimal 255 karakter',
         'id_kelas.required' => 'Kelas wajib diisi',
         'id_kelas.exists' => 'Kelas tidak valid',

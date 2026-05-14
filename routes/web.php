@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/wali-siswa/{id_siswa}/add', [WaliSiswaController::class, 'add'])->name('wali-siswa.create.action');
     Route::put('/wali-siswa/{id_siswa}/update/{id}', [WaliSiswaController::class, 'update'])->name('wali-siswa.update.action');
     Route::delete('/wali-siswa/{id_siswa}/delete/{id}', [WaliSiswaController::class, 'delete'])->name('wali-siswa.delete.action');
-    Route::put('/siswa/update-password/{id}', [SiswaController::class, 'updatePassword'])->name('siswa.update.password.action');
+    Route::put('/siswa/update-password/{id}', [SiswaController::class, 'updatePassword'])->name('siswa.update-password.action');
 });
 
 // universal redirect
