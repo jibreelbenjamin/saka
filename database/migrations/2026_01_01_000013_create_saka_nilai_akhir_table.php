@@ -12,8 +12,9 @@ return new class extends Migration
             $table->id('id_nilai_akhir');
             $table->foreignId('id_mapel')->constrained('saka_mapel', 'id_mapel')->onDelete('cascade');
             $table->foreignId('id_siswa')->constrained('saka_siswa', 'id_siswa')->onDelete('cascade');
+            $table->foreignId('id_tahun_ajaran')->constrained('saka_tahun_ajaran', 'id_tahun_ajaran')->onDelete('cascade');
             $table->decimal('nilai', 8, 2);
-            $table->unique(['id_mapel', 'id_siswa'], 'nilai_akhir_unique');
+            $table->unique(['id_mapel', 'id_siswa', 'id_tahun_ajaran'], 'nilai_akhir_unique');
             $table->timestamps();
         });
     }

@@ -12,8 +12,10 @@ return new class extends Migration
             $table->id('id_nilai_harian');
             $table->foreignId('id_komponen_nilai_harian')->constrained('saka_komponen_nilai_harian', 'id_komponen_nilai_harian')->onDelete('cascade');
             $table->foreignId('id_siswa')->constrained('saka_siswa', 'id_siswa')->onDelete('cascade');
+            $table->foreignId('id_tahun_ajaran')->constrained('saka_tahun_ajaran', 'id_tahun_ajaran')->onDelete('cascade');
             $table->decimal('nilai', 8, 2);
-            $table->unique(['id_komponen_nilai_harian', 'id_siswa'], 'nilai_harian_unique');
+            $table->decimal('simpanan_nilai_terpakai', 8, 2);
+            $table->unique(['id_komponen_nilai_harian', 'id_siswa', 'id_tahun_ajaran'], 'nilai_harian_unique');
             $table->timestamps();
         });
     }
