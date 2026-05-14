@@ -16,7 +16,7 @@ class AdminController extends Controller
     
     protected $rules = [
         'username' => 'required|string|max:255|unique:saka_admin,username',
-        'password' => 'required|string|min:8|confirmed',
+        'password' => 'required|confirmed|string|min:8',
         'nama' => 'required|string|max:255',
     ];
 
@@ -29,7 +29,7 @@ class AdminController extends Controller
         'password.required' => 'Password admin wajib diisi',
         'password.string' => 'Password admin harus berupa teks',
         'password.min' => 'Password admin minimal 8 karakter',
-        'password.confirmed' => 'Konfirmasi password admin tidak sama',
+        'password.confirmed' => 'Konfirmasi password tidak cocok',
 
         'nama.required' => 'Nama admin wajib diisi',
         'nama.string' => 'Nama admin harus berupa teks',
@@ -117,12 +117,7 @@ class AdminController extends Controller
         }
     }
 
-    public function delete($id)
-    {
-        $this->model::findOrFail($id)->delete();
-        return redirect()->route($this->route)->with(['successToast' => ucfirst($this->echo).' berhasil dihapus']);
-    }
-        public function updatePassword(Request $request, $id)
+    public function updatePassword(Request $request, $id)
         {
         $data = $this->model::where($this->primary, $id)->firstOrFail();
 
@@ -154,6 +149,12 @@ class AdminController extends Controller
                 ->withErrors(['message' => ucfirst($this->echo).' tidak ditemukan']);
         }
     }   
+
+    public function delete($id)
+    {
+        $this->model::findOrFail($id)->delete();
+        return redirect()->route($this->route)->with(['successToast' => ucfirst($this->echo).' berhasil dihapus']);
+    } 
 }
 
 
