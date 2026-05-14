@@ -157,7 +157,7 @@
             </div>
             <!-- End Card -->
 
-             <!-- Card -->
+            <!-- Card -->
             <div class="bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
                 <form action="{{ route($page.'.update.password.action', $action_param) }}" method="post">
                     @csrf
