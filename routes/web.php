@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\WaliSiswaController;
+use App\Http\Controllers\DataNilaiController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -70,6 +71,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/wali-siswa/{id_siswa}/update/{id}', [WaliSiswaController::class, 'update'])->name('wali-siswa.update.action');
     Route::delete('/wali-siswa/{id_siswa}/delete/{id}', [WaliSiswaController::class, 'delete'])->name('wali-siswa.delete.action');
     Route::put('/siswa/update-password/{id}', [SiswaController::class, 'updatePassword'])->name('siswa.update-password.action');
+
+    // Data nilai
+    Route::get('/data-nilai', [DataNilaiController::class, 'introMapel'])->name('data-nilai');
+    Route::post('/data-nilai', [DataNilaiController::class, 'introKelas'])->name('data-nilai.kelas');
+    Route::post('/data-nilai/go', [DataNilaiController::class, 'go'])->name('data-nilai.go');
+    Route::get('/data-nilai/{id_mapel}/{id_kelas}', [DataNilaiController::class, 'index'])->name('data-nilai.daftar');
 });
 
 // universal redirect
