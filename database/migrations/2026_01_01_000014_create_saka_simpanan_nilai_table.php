@@ -13,12 +13,11 @@ return new class extends Migration
             $table->foreignId('id_mapel')->constrained('saka_mapel', 'id_mapel')->onDelete('cascade');
             $table->foreignId('id_guru')->constrained('saka_guru', 'id_guru')->onDelete('cascade');
             $table->foreignId('id_siswa')->constrained('saka_siswa', 'id_siswa')->onDelete('cascade');
+            $table->foreignId('id_tahun_ajaran')->constrained('saka_tahun_ajaran', 'id_tahun_ajaran')->onDelete('cascade');
             $table->decimal('nilai', 8, 2);
             $table->decimal('terpakai_harian', 8, 2);
             $table->decimal('terpakai_assesmen', 8, 2);
-            $table->decimal('max_pemakaian', 8, 2)->default(100);
-            $table->decimal('nilai_prioritas', 8, 2)->default(75);
-            $table->unique(['id_mapel', 'id_guru', 'id_siswa'], 'simpanan_nilai_unique');
+            $table->unique(['id_mapel', 'id_guru', 'id_siswa', 'id_tahun_ajaran'], 'simpanan_nilai_unique');
             $table->timestamps();
         });
     }

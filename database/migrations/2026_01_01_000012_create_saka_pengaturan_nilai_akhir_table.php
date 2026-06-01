@@ -12,10 +12,11 @@ return new class extends Migration
             $table->id('id_pengaturan_nilai_akhir');
             $table->foreignId('id_guru')->constrained('saka_guru', 'id_guru')->onDelete('cascade');
             $table->foreignId('id_mapel')->constrained('saka_mapel', 'id_mapel')->onDelete('cascade');
+            $table->foreignId('id_tahun_ajaran')->constrained('saka_tahun_ajaran', 'id_tahun_ajaran')->onDelete('cascade');
             $table->integer('pres_nilai_harian')->default(60);
             $table->integer('pres_nilai_assesmen')->default(40);
             $table->integer('kkm')->default(75);
-            $table->unique(['id_guru', 'id_mapel'], 'pengaturan_nilai_akhir_unique');
+            $table->unique(['id_guru', 'id_mapel', 'id_tahun_ajaran'], 'pengaturan_nilai_akhir_unique');
             $table->timestamps();
         });
     }
