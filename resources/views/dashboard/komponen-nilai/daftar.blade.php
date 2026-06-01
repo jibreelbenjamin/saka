@@ -73,8 +73,13 @@
                                     <td class="px-4 py-3 text-sm text-gray-700 dark:text-neutral-300">{{ $item->tahunAjaran ? $item->tahunAjaran->tahun_mulai . '/' . $item->tahunAjaran->tahun_akhir . ' - Smt ' . $item->tahunAjaran->semester : '-' }}</td>
                                     <td class="px-4 py-3 text-sm text-gray-700 dark:text-neutral-300">{{ $item->kkm ?? 0 }}</td>
                                     <td class="px-5 py-3 text-lg">
-                                        <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-teal-100 text-teal-800 dark:bg-teal-500/20 dark:text-teal-400">
-                                            {{ $item->is_active ? 'Aktif' : 'Nonaktif' }}
+                                        @php
+                                            $badgeClasses = $item->is_active
+                                                ? 'inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-teal-100 text-teal-800 dark:bg-teal-500/20 dark:text-teal-400'
+                                                : 'inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-500/20 dark:text-red-400';
+                                        @endphp
+                                        <span class="{{ $badgeClasses }}">
+                                            {{ $item->is_active ? 'Aktif' : 'Mati' }}
                                         </span>
                                     </td>
                                     <td class="whitespace-nowrap px-4 py-3">

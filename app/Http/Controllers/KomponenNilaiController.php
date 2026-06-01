@@ -81,7 +81,13 @@ class KomponenNilaiController extends Controller
         if ($search) {
             $query->where(function ($q) use ($search, $config) {
                 $q->where($config['code'], 'LIKE', "%{$search}%")
-                    ->orWhere('nama_komponen', 'LIKE', "%{$search}%");
+                    ->orWhere('nama_komponen', 'LIKE', "%{$search}%")
+                    ->orWhereHas('mapel', function ($mq) use ($search) {
+                        $mq->where('nama_mapel', 'LIKE', "%{$search}%");
+                    })
+                    ->orWhereHas('guru', function ($gq) use ($search) {
+                        $gq->where('nama', 'LIKE', "%{$search}%");
+                    });
             });
         }
 
