@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\KelasController;
+use App\Http\Controllers\Api\MapelController;
 use App\Http\Controllers\Api\AksesMapelController;
 use App\Http\Controllers\Api\GuruController;
 use App\Http\Controllers\Api\SiswaController;
@@ -22,6 +23,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/kelas/{id}', [KelasController::class, 'update']);
     Route::delete('/kelas/{id}', [KelasController::class, 'destroy']);
 
+    // Mapel
+    Route::get('/mapel', [MapelController::class, 'index']);
+    Route::post('/mapel', [MapelController::class, 'store']);
+    Route::get('/mapel/{id}', [MapelController::class, 'show']);
+    Route::put('/mapel/{id}', [MapelController::class, 'update']);
+    Route::delete('/mapel/{id}', [MapelController::class, 'destroy']);
+  
     // Akses Mapel
     Route::get('/akses-mapel', [AksesMapelController::class, 'index']);
     Route::post('/akses-mapel', [AksesMapelController::class, 'store']);
