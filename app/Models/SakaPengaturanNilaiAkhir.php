@@ -16,6 +16,7 @@ class SakaPengaturanNilaiAkhir extends Model
     protected $fillable = [
         'id_guru',
         'id_mapel',
+        'id_tahun_ajaran',
         'pres_nilai_harian',
         'pres_nilai_assesmen',
         'kkm',
@@ -36,5 +37,10 @@ class SakaPengaturanNilaiAkhir extends Model
     public function mapel()
     {
         return $this->belongsTo(SakaMapel::class, 'id_mapel', 'id_mapel');
+    }
+
+    public function tahunAjaran()
+    {
+        return $this->belongsTo(SakaTahunAjaran::class, 'id_tahun_ajaran', 'id_tahun_ajaran');
     }
 }

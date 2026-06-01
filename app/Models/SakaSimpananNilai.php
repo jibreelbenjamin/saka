@@ -17,19 +17,16 @@ class SakaSimpananNilai extends Model
         'id_mapel',
         'id_guru',
         'id_siswa',
+        'id_tahun_ajaran',
         'nilai',
         'terpakai_harian',
         'terpakai_assesmen',
-        'max_pemakaian',
-        'nilai_prioritas',
     ];
 
     protected $casts = [
         'nilai' => 'decimal:2',
         'terpakai_harian' => 'decimal:2',
         'terpakai_assesmen' => 'decimal:2',
-        'max_pemakaian' => 'decimal:2',
-        'nilai_prioritas' => 'decimal:2',
     ];
 
     // Relasi
@@ -46,5 +43,10 @@ class SakaSimpananNilai extends Model
     public function siswa()
     {
         return $this->belongsTo(SakaSiswa::class, 'id_siswa', 'id_siswa');
+    }
+
+    public function tahunAjaran()
+    {
+        return $this->belongsTo(SakaTahunAjaran::class, 'id_tahun_ajaran', 'id_tahun_ajaran');
     }
 }
