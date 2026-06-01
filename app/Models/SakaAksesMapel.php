@@ -32,6 +32,6 @@ class SakaAksesMapel extends Model
 
     public function kelas()
     {
-        return $this->belongsTo(SakaGuru::class, 'id_kelas', 'id_kelas');
+        return $this->belongsTo(SakaKelas::class, 'id_kelas', 'id_kelas');
     }
 }

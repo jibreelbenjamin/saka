@@ -198,11 +198,11 @@
                         </a>
                     </li>
                     <li>
-                        <a class="{{ ($page == 'data-nilai') ? $classPageActive : $classPageInactive }}" href="{{ route('develop') }}">
+                        <a class="{{ ($page == 'data-nilai') ? $classPageActive : $classPageInactive }}" href="{{ route('data-nilai') }}">
                         Data nilai
                         <div class="ms-auto">
-                            <span class="ms-auto inline-flex items-center gap-1.5 py-px px-1.5 rounded-sm text-[10px] leading-4 font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-300">
-                                DEV
+                            <span class="ms-auto inline-flex items-center gap-1.5 py-px px-1.5 rounded-sm text-[10px] leading-4 font-medium bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-300">
+                                PRE
                             </span>
                         </div>
                         </a>
