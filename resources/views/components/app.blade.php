@@ -188,12 +188,9 @@
                 <div id="nilai-accordion-sub" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 {{ in_array($page, $nilai) ? '' : 'hidden' }}" role="region" aria-labelledby="nilai-accordion">
                     <ul class="hs-accordion-group ps-7 mt-1 flex flex-col gap-y-1 relative before:absolute before:top-0 before:start-4.5 before:w-0.5 before:h-full before:bg-gray-100 dark:before:bg-neutral-700" data-hs-accordion-always-open>
                         <li>
-                        <a class="{{ ($page == 'komponen-nilai') ? $classPageActive : $classPageInactive }}" href="{{ route('develop') }}">
+                        <a class="{{ ($page == 'komponen-nilai') ? $classPageActive : $classPageInactive }}" href="{{ route('komponen-nilai') }}">
                         Komponen nilai
                         <div class="ms-auto">
-                            <span class="ms-auto inline-flex items-center gap-1.5 py-px px-1.5 rounded-sm text-[10px] leading-4 font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-300">
-                                DEV
-                            </span>
                         </div>
                         </a>
                     </li>
