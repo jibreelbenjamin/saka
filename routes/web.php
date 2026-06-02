@@ -10,6 +10,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\WaliSiswaController;
 use App\Http\Controllers\KomponenNilaiController;
 use App\Http\Controllers\DataNilaiController;
+use App\Http\Controllers\MapelController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -86,6 +87,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/data-nilai', [DataNilaiController::class, 'introKelas'])->name('data-nilai.kelas');
     Route::post('/data-nilai/go', [DataNilaiController::class, 'go'])->name('data-nilai.go');
     Route::get('/data-nilai/{id_mapel}/{id_kelas}', [DataNilaiController::class, 'index'])->name('data-nilai.daftar');
+
+    // Mapel (Mata Pelajaran)
+    Route::get('/mapel', [MapelController::class, 'index'])->name('mapel');
+    Route::get('/mapel/create', [MapelController::class, 'create'])->name('mapel.create');
+    Route::get('/mapel/{id}', [MapelController::class, 'setting'])->name('mapel.setting');
+    Route::post('/mapel/add', [MapelController::class, 'add'])->name('mapel.create.action');
+    Route::put('/mapel/update/{id}', [MapelController::class, 'update'])->name('mapel.update.action');
+    Route::delete('/mapel/delete/{id}', [MapelController::class, 'delete'])->name('mapel.delete.action');
 });
 
 // universal redirect
